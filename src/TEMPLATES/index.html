@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-4">
+	<div class="column">
+		<h2>Add Item</h2>
+		<form action="add_todo/" method="post" class="form-inline">
+  			<label class="sr-only" for="inlineFormInputName2">Name</label>
+ 			 <input type="text" name="content" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Todo Item">
+   			<button type="submit" id ="refresh" class="btn btn-primary mb-2"><svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
+</svg></button>
+		</form>
+
+	</div>
+</div>
+
+<div class="row mt-4, mr-6">
+<ul class="list-group">
+	{% for todo_item in todo_items %}
+	  <li class="list-group-item">
+	  	{{ todo_item.text }}
+	  	<div class="float-right">
+	  	<form action="delete_todo/{{todo_item.id}}/" action="post">
+	  		<button type="submit" id ="refresh" class="btn btn-danger btn-sm"><svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-minus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM6 7.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
+</svg></button>
+	  	</form>
+	  </div>
+	  </li>
+	{% endfor %}
+</ul>
+
+	</div>
+{% endblock content %}
+
